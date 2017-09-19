@@ -5,6 +5,11 @@ A dedicated driver library implementation of PCD8544 graphic controller for
 
 (PCD8544 is a.k.a. [Nokia 5110 LCD module](https://www.google.co.jp/search?q=nokia5110+lcd&tbm=isch)).
 
+Documentation and API reference is available at readthedocs.org.
+![docs](https://readthedocs.org/projects/esp32-pcd8544/badge/?version=latest)
+
+http://esp32-pcd8544.readthedocs.io/en/latest/
+
 ## Key Features
 
 - All functionalities in the PCD8544 datasheet are implemented

@@ -1,0 +1,38 @@
+menu "PCD8544 (a.k.a. Nokia5110 LCD) Configuration"
+
+config PCD8544_TRANS_QUEUE_SIZE
+    int "Data transfer queue size"
+        range 1 255
+	default 32
+	help
+		Internal queue size for asynchronous SPI transmission.
+                Optimal value depends on if you will use a DMA channel for PCD8544 or not.
+
+                If you use DMA, you will get less CPU usage and low latency. You can set lesser value
+                like 32 for less memory overhead.
+                If you do not use DMA, and you got warning from serial log, higher value like 96 will be
+                optimal for lesser CPU load.
+
+                iF you encountered stop, queue is full.
+
+config PCD8544_BIAS_SYSTEM
+    int "Bias system"
+        range 0 7
+	default 7
+	help
+		Internal parameter of base of LCD contrast range.
+
+                Tune this parameter when your PCD8544 have too low contrast, It can be confirmed
+                by segments are all ON or all OFF. For more detail, read PCD8544 datasheet.
+
+config PCD8544_TEMPERATURE_COEFFICIENT
+    int "Temperature coefficient"
+        range 0 3
+	default 2
+	help
+		Internal parameter for V_LCD Voltage curve for optimize PCD8544 LCD.
+
+                Tune this parameter when you feel the contrast of LCD is uncontrollable
+                especially in low temperature environment. For more detail, read PCD8544 datasheet.
+
+endmenu

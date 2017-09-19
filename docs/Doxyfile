@@ -1,0 +1,23 @@
+PROJECT_NAME     = "ESP32-PCD8544"
+
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = YES
+
+XML_OUTPUT       = xml
+GENERATE_LATEX   = NO
+GENERATE_MAN     = YES
+GENERATE_RTF     = NO
+CASE_SENSE_NAMES = NO
+INPUT = \
+    ##
+    ## PCD8544
+    ##
+    ../include/pcd8544.h \
+    ../include/pcd8544_pin.h
+
+RECURSIVE        = YES
+QUIET            = YES
+JAVADOC_AUTOBRIEF = YES
+GENERATE_HTML = NO
+GENERATE_XML = YES

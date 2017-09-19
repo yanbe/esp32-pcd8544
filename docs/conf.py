@@ -38,7 +38,7 @@ os.system("python gen-kconfig-doc.py > _build/inc/kconfig.inc")
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['breathe', 'link-roles']
+extensions = ['breathe']
 
 # Breathe extension variables
 breathe_projects = { "esp32-pcd8544": "xml/" }

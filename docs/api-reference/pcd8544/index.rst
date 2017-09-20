@@ -9,10 +9,11 @@ ESP32-PCD8544 is dedicated driver implementation of PCD8544 LCD controller (a.k.
 Application Examples
 --------------------
 
-TBD
+* "Hello world" example - `hello_pcd8544 <https://github.com/yanbe/esp32-pcd8544-examples/tree/master/examples/hello_pcd8544>`_
+
+( more example projects will be written here )
 
 .. See :example:`get-started` directory of ESP32-PCD8544 examples that contains the following applications:
-   * Printing text and formatted text - :example:`text`
    * Drawing lines - :example:`lines`
    * Drawing bitmap images - :example:`bitmap`
    * Using contrast control - :example:`contrast`

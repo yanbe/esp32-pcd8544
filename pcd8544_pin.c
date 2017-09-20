@@ -20,7 +20,6 @@ static const pcd8544_spi_pin_config_t spi_native_pin[3] = {
 };
 
 static const pcd8544_control_pin_config_t pcd8544_default_control_pin = {
-    .vcc_io_num = 2,
     .reset_io_num = 4,
     .dc_io_num = 25,
     .backlight_io_num = 16,

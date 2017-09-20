@@ -10,6 +10,8 @@ Documentation and API reference is available at readthedocs.org.
 
 http://esp32-pcd8544.readthedocs.io/en/latest/
 
+Application examples are in separeted repository: https://github.com/yanbe/esp32-pcd8544-examples
+
 ## Key Features
 
 - All functionalities in the PCD8544 datasheet are implemented

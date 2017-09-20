@@ -9,8 +9,8 @@ ESP32-PCD8544 is dedicated driver implementation of PCD8544 LCD controller (a.k.
 Application Examples
 --------------------
 
-* "Hello world" example - `hello_pcd8544 <https://github.com/yanbe/esp32-pcd8544-examples/tree/master/examples/hello_pcd8544>`_
-* Draw lines via frame buffer - `draw_lines <https://github.com/yanbe/esp32-pcd8544-examples/tree/master/examples/draw_lines>`_
+* "Hello world" example - :example:`hello_pcd8544`
+* Draw lines via frame buffer - :example:`draw_lines`
 
 ( more example projects will be written here )
 

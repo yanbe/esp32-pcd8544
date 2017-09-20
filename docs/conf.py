@@ -20,8 +20,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import sys
-import os
+import sys, os
 
 from subprocess import call
 
@@ -44,8 +43,15 @@ extensions = ['breathe']
 breathe_projects = { "esp32-pcd8544": "xml/" }
 breathe_default_project = "esp32-pcd8544"
 
+extensions += ['sphinx.ext.extlinks']
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+extlinks = {
+    'example': ('https://github.com/yanbe/esp32-pcd8544-examples/tree/master/examples/%s', ''),
+    'component_file': ('https://github.com/yanbe/esp32-pcd8544/tree/master/%s', '')
+}
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:

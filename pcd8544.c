@@ -64,6 +64,7 @@ static void pcd8544_spi_init() {
 }
 
 static void pcd8544_reset() {
+    gpio_set_level(config.control_pin->vcc_io_num, 1);
     gpio_set_level(config.control_pin->reset_io_num, 1);
     gpio_set_level(config.control_pin->reset_io_num, 0);
     gpio_set_level(config.control_pin->reset_io_num, 1);
@@ -92,6 +93,7 @@ void pcd8544_init(pcd8544_config_t* pcd8544_config) {
     if (config.control_pin == NULL) {
         config.control_pin = (void *)pcd8544_default_control_pin_config(config.spi_host);
     }
+    gpio_set_direction(config.control_pin->vcc_io_num, GPIO_MODE_OUTPUT);
     gpio_set_direction(config.control_pin->reset_io_num, GPIO_MODE_OUTPUT);
     gpio_set_direction(config.control_pin->dc_io_num, GPIO_MODE_OUTPUT);
     gpio_set_direction(config.control_pin->backlight_io_num, GPIO_MODE_OUTPUT);
@@ -170,6 +172,9 @@ void pcd8544_set_backlight(bool on) {
 }
 
 void pcd8544_set_powerdown_mode(bool powerdown) {
+    if (!powerdown) {
+        gpio_set_level(config.control_pin->vcc_io_num, 1);
+    }
     pcd8544_set_backlight(!powerdown);
     if (powerdown) {
         pcd8544_clear_display();
@@ -178,6 +183,10 @@ void pcd8544_set_powerdown_mode(bool powerdown) {
     uint8_t *cmd = pcd8544_malloc_for_queue_trans(1);
     *cmd = 0b00100000 | powerdown ? (1 << 2) : 0; // power-down mode / chip is active
     pcd8544_cmds(cmd, 1);
+    pcd8544_sync_and_gc();
+    if (powerdown) {
+        gpio_set_level(config.control_pin->vcc_io_num, 0);
+    }
 }
 
 void pcd8544_set_contrast(uint8_t vop) {

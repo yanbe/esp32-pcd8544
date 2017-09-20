@@ -54,6 +54,13 @@ typedef struct pcd8544_spi_pin_config_t {
  */
 typedef struct pcd8544_control_pin_config_t {
     /**
+     * @brief GPIO Pin number for Vcc control pin
+     *
+     *  GPIO pin number connected to the `Vcc` pin on Nokia 5110 LCD Module
+     *
+     */
+    uint8_t vcc_io_num;
+    /**
      * @brief GPIO Pin number for Reset control pin
      *
      *  GPIO pin number connected to the `RST` pin on Nokia 5110 LCD Module

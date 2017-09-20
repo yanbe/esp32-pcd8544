@@ -10,6 +10,7 @@ Application Examples
 --------------------
 
 * "Hello world" example - `hello_pcd8544 <https://github.com/yanbe/esp32-pcd8544-examples/tree/master/examples/hello_pcd8544>`_
+* Draw lines via frame buffer - `draw_lines <https://github.com/yanbe/esp32-pcd8544-examples/tree/master/examples/draw_lines>`_
 
 ( more example projects will be written here )
 

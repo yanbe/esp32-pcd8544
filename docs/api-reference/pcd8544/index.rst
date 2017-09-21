@@ -11,11 +11,11 @@ Application Examples
 
 * "Hello world" example - :example:`hello_pcd8544`
 * Draw lines via frame buffer - :example:`draw_lines`
+* Positioning and formatting texts - :example:`print_texts`
 
 ( more example projects will be written here )
 
 .. See :example:`get-started` directory of ESP32-PCD8544 examples that contains the following applications:
-   * Drawing lines - :example:`lines`
    * Drawing bitmap images - :example:`bitmap`
    * Using contrast control - :example:`contrast`
    * Using power-down mode - :example:`power-down`

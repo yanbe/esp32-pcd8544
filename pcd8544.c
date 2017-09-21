@@ -237,14 +237,14 @@ void pcd8544_draw_rectangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
     pcd8544_draw_line(x0, y0, x0, y1);
 }
 
-void pcd8544_set_pos(uint8_t col, uint8_t row) {
+void pcd8544_set_pos(uint8_t row, uint8_t col) {
     uint8_t *cmds = pcd8544_malloc_for_queue_trans(2);
     pcd8544_register_buf_for_gc(cmds);
-    cmds[0] = 0b01000000 | col;
-    cmds[1] = 0b10000000 | row,
+    cmds[0] = 0b10000000 | row,
+    cmds[1] = 0b01000000 | col;
     pcd8544_cmds(cmds, 2);
-    last_col = col;
     last_row = row;
+    last_col = col;
 }
 
 void pcd8544_draw_bitmap(const uint8_t *bitmap, uint8_t rows, uint8_t cols, bool transparent) {

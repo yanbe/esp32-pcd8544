@@ -211,7 +211,7 @@ static void pcd8544_set_addressing_mode(pcd8544_addressing_mode mode) {
 
 void pcd8544_draw_line(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
     float m = (float)(y1-y0)/(x1-x0);
-    if (m < 1) {
+    if (m >= 0 && m < 1) {
         int8_t dx = x1 > x0 ? 1 : -1;
         for (uint8_t x = x0; x != x1; x+=dx) {
             uint8_t y = m * (x - x0) + y0;

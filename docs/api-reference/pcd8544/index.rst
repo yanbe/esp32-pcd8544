@@ -14,6 +14,7 @@ Application Examples
 * Positioning and formatting texts - :example:`print_texts`
 * Drawing bitmap images - :example:`draw_bitmaps`
 * Miscellaneous mode controls - :example:`control_modes`
+* Plotting Touch sensor values - :example:`plot_touch_sensor`
 
 ( more example projects will be written here )
 

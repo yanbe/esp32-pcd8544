@@ -13,8 +13,8 @@ static const pcd8544_spi_pin_config_t spi_native_pin[3] = {
         .spics_io_num = 15,
     }, {
         .sclk_io_num = 18,
-        .miso_io_num = 23,
-        .mosi_io_num = 19,
+        .miso_io_num = 19,
+        .mosi_io_num = 23,
         .spics_io_num = 5,
     }
 };

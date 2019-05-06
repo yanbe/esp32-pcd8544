@@ -30,6 +30,8 @@ static uint8_t last_col = 0, last_row = 0;
 
 static uint32_t last_warned_at = 0;
 
+static uint8_t *custom_chars[FONT5X7_CHAR_CODE_OFFSET];
+
 static void pcd8544_pre_transfer_callback(spi_transaction_t *t) {
     int dc = (int)t->user;
     gpio_set_level(config.control_pin->dc_io_num, dc);
@@ -109,6 +111,8 @@ void pcd8544_init(pcd8544_config_t* pcd8544_config) {
     pcd8544_set_contrast(20);
 
     frame_buf = config.dma_chan > 0 ? heap_caps_malloc(PCD8544_FRAME_BUF_SIZE, MALLOC_CAP_DMA) : malloc(PCD8544_FRAME_BUF_SIZE);
+
+    memset(custom_chars, 0, sizeof(this->custom_chars));
 }
 
 static void pcd8544_check_queue_size() {
@@ -274,8 +278,14 @@ void pcd8544_puts(const char *text) {
     uint8_t *data = pcd8544_malloc_for_queue_trans(data_len);
     pcd8544_register_buf_for_gc(data);
     for (uint8_t i = 0; i < text_len; i++) {
+        unsigned char *glyph = font5x7[0];
+        if (text[i] >= FONT5X7_CHAR_CODE_OFFSET) {
+            glyph = font5x7[text[i]-FONT5X7_CHAR_CODE_OFFSET];    
+        } else if (custom_chars[i]) {
+            glyph = custom_chars[text[i];
+        }
         for (uint8_t j = 0; j < char_width-1; j++) {
-            data[i * char_width + j] = font5x7[text[i]-FONT5X7_CHAR_CODE_OFFSET][j];
+            data[i * char_width + j] = glyph[j];
         }
 	data[i * char_width + char_width-1] = 0;
     }
@@ -306,4 +316,13 @@ void pcd8544_free() {
     spi_bus_free(config.spi_host);
     heap_caps_free(frame_buf);
     heap_caps_free(data_ptrs);
+}
+
+
+void pcd8544_create_char(const char chr, const uint8_t *glyph) {
+    if (chr >= FONT5X7_CHAR_CODE_OFFSET) {
+        return;
+    }
+
+    custom_chars[chr] = glyph;
 }

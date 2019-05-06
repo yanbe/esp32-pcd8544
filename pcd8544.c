@@ -322,5 +322,5 @@ void pcd8544_create_char(char chr, const uint8_t *glyph) {
     if (chr >= FONT5X7_CHAR_CODE_OFFSET && chr == 0) {
         return;
     }
-    custom_chars[chr-1] = glyph;
+    custom_chars[chr-1] = (uint8_t*)glyph;
 }

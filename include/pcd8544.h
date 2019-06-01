@@ -385,4 +385,9 @@ void pcd8544_sync_and_gc();
  */
 void pcd8544_free();
 
+/**
+ * @brief Assign a user-defined glyph (5x7) to an ASCII character (0-31)...
+ */
+void pcd8544_create_char(const char chr, const unsigned char *glyph);
+
 #endif /* _PCD8544_H_ */
